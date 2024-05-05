@@ -13,6 +13,8 @@
     <button onclick="checkNum()">확인</button>
     <div id="app"></div>
     <script>
+      let ranNum = randomNumber();
+
       function avoidDuplicates(input) {
         return new Set(input).size !== input.length;
       }
@@ -39,6 +41,22 @@
           numbers.splice(randomIndex, 1);
         }
         return randomNumbers.join("");
+      }
+
+      function calculate(ranNum, userInput) {
+        let strikes = 0;
+        let balls = 0;
+        for (let i = 0; i < 3; i++) {
+          if (ranNum[i] === userInput[i]) {
+            strikes++;
+          } else if (ranNum.includes(userInput[i])) {
+            balls++;
+          }
+        }
+        if (strikes === 0 && balls === 0) {
+          return "낫싱";
+        }
+        return { strikes, balls };
       }
     </script>
   </body>
