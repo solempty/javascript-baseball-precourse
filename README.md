@@ -26,3 +26,18 @@
               return;
             }
           }
+
+3.  랜덤 수 생성하기
+
+    > 사용자가 맞출 랜덤한 수를 생성한다.
+
+          function randomNumber() {
+            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+            const randomNumbers = [];
+            for (let i = 0; i < 3; i++) {
+              const randomIndex = Math.floor(Math.random() * numbers.length);
+              randomNumbers.push(numbers[randomIndex]);
+              numbers.splice(randomIndex, 1);
+            }
+            return randomNumbers.join("");
+          }
