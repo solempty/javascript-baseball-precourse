@@ -10,8 +10,25 @@
     <b>1~9까지의 수를 중복없이 3개 입력해주세요.</b>
     <p>올바른 예) 139<br />틀린 예) 122</p>
     <input type="text" id="userInput" maxlength="3" />
-    <button>확인</button>
+    <button onclick="checkNum()">확인</button>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <script>
+      function avoidDuplicates(input) {
+        return new Set(input).size !== input.length;
+      }
+
+      function checkNum() {
+        const userInput = document.getElementById("userInput").value;
+        if (
+            !/^\d{3}$/.test(userInput) ||
+            avoidDuplicates(userInput) ||
+            userInput.includes("0")
+        ) {
+            alert("1~9까지의 수를 중복없이 3개 입력해주세요.");
+            document.getElementById("userInput").value = "";
+            return;
+        }
+      }
+    </script>
   </body>
 </html>
